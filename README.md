@@ -45,3 +45,21 @@
 ##### Login page: `localhost/aduhay/login`
 
 - Buat login (ya iya lah ya)
+
+## Usage
+
+### Database
+
+	<?php
+	
+	require_once("db.php");
+	
+	// Buat objek DB-nya dulu
+	$db = new DB();
+	
+	// Query general. Hasil telah dikonversi ke array
+	$result = $db->query("SELECT * FROM `taman`");
+	print_r($result);
+
+	
+	
