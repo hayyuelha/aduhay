@@ -15,6 +15,7 @@
 			- home.php
 			- aduan.php
 			- login.php
+			- error.php
 	- controller
 		- db.php
 		- db_config.php
@@ -32,7 +33,6 @@
 ## Routes
 
 ##### Homepage: `localhost/aduhay/`
-
 - Form pengaduan
 
 ##### Daftar Aduan: `localhost/aduhay/aduan`
