@@ -4,7 +4,7 @@ isset($_GET['page']) ? $page = $_GET['page'] : $page = "";
 
 switch ($page) {
 	case ""		:
-		$title = "Home";
+		$title = "Input Aduan";
 		$body  = "views/pages/home.php";
 		break;
 
