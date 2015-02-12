@@ -109,7 +109,7 @@ $tbl = '
   <th rowspan="2" width="40" align="center"><b>No.</b></th>
   <th rowspan="2" width="140" align="center"><b>Kategori</b></th>
   <th colspan="4" align="center"><b>Status</b></th>
-  <th rowspan="2" width="93" align="center"> <b>Total</b></th>
+  <th rowspan="2" width="93" align="center"> <b>Total Aduan</b></th>
  </tr>
  <tr>
   <th align="center"><b>Menunggu Konfirmasi</b></th>
@@ -134,7 +134,7 @@ foreach($kategori as $row2){
            </tr>';
 }
 $tbl .= '<tr>
-              <td colspan="2" align="center"><b>Total</b></td>
+              <td colspan="2" align="center"><b>Total Aduan</b></td>
               <td></td>
               <td></td>
               <td></td>
