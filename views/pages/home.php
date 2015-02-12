@@ -3,7 +3,7 @@
       <div class="masthead">
         <nav>
           <ul class="nav nav-justified">
-            <li class="active"><a href="">Input Aduan</a></li>
+            <li class="active"><a href="input">Input Aduan</a></li>
             <li><a href="aduan">Daftar Aduan</a></li>
           </ul>
         </nav>
@@ -36,6 +36,10 @@
 			</div>
 			<div class="row">
 				<textarea class="form-control" rows="5" id="deskripsi" placeholder="Deskripsi aduan"></textarea> 
+			</div>
+			<div class="row" id="btnGrp" align="center">
+				<button class="btn btn-default span2" value="submit" id="btn_foto">Tautkan Foto</button>	
+				<button class="btn btn-success span2" value="submit" id="btn_adukan">Adukan</button>
 			</div>
 		</div>
       </form>
