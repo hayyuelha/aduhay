@@ -27,7 +27,6 @@
 </section>
 
 
-<!-- modal belum berfungsi -->
 <div class="modal fade forget-modal" tabindex="-1" role="dialog" aria-labelledby="myForgetModalLabel" aria-hidden="true">
 	<div class="modal-dialog modal-sm">
 		<div class="modal-content">

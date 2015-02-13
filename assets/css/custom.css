@@ -46,6 +46,16 @@
 	padding-left: 4px;
 }
 
+#ss_temp1 {
+	width: 375px;
+	height: auto;
+}
+
+#ss_temp2 {
+	width: 375px;
+	height: auto;
+}
+
 body {
 	min-height: 2000px;
 	padding-top: 70px;

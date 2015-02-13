@@ -58,13 +58,37 @@
 			    </table>
 		    </div>
 		    <div class="row" id="btnGenerateLap">
-		    	<button class="btn btn-success" value="">Buat Laporan</button>
+		    	<button type="button" class="btn btn-success" value="" data-toggle="modal" data-target="#opsi-laporan-modal">Buat Laporan</button>
 		    </div>
 		</div>
       </form>
       </div>
 </div> <!-- /container -->
 
+<div class="modal fade" id="opsi-laporan-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Pilih Template Laporan</h4>
+      </div>
+      <div class="modal-body">
+        <form role="form">
+		    <div class="radio"><label>
+		      <input type="radio" name="optradio">Template 1: Laporan aduan per taman</br><img src="assets/img/temp1.png" id="ss_temp1" alt="temp1">
+		    </label></div>
+		    <div class="radio"><label>
+		      <input type="radio" name="optradio">Template 2: Laporan aduan berdasarkan status</br><img src="assets/img/temp2.png" id="ss_temp2" alt="temp2">
+		    </label></div>
+		</form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
+        <button type="button" class="btn btn-primary">Buat laporan</button>
+      </div>
+    </div>
+  </div>
+</div>
 
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="assets/js/ie10-viewport-bug-workaround.js"></script>
