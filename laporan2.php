@@ -2,16 +2,15 @@
 
 // Include the main TCPDF library (search for installation path).
 require_once('controllers/tcpdf_include.php');
+require_once('pdfKop.php');
 require_once('controllers/db.php');
-require_once('pdfCover.php');
 
 // create new PDF document
-$pdf = new MYPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
+$pdf = new MYPDF('P', PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
 // set document information
 $pdf->SetCreator(PDF_CREATOR);
 $pdf->SetAuthor('Aduhay');
 
-$pdf->SetPrintHeader(false);
 // set default monospaced font
 $pdf->SetDefaultMonospacedFont(PDF_FONT_MONOSPACED);
 
@@ -35,34 +34,22 @@ if (@file_exists(dirname(__FILE__).'/lang/eng.php')) {
 
 // ---------------------------------------------------------
 $pdf->AddPage();
+$pdf->SetFont('helvetica', 'B', 12);
 
+$pdf->Write(0, '', '', 0, 'C', true, 0, false, false, 0);
+$pdf->Write(0, "Laporan Pengaduan Kondisi Taman Kota Bandung", '', 0, 'C', true, 0, false, false, 0);
+$pdf->Write(0, "Bulan Januari 2015", '', 0, 'C', true, 0, false, false, 0);
+$pdf->Write(0, '', '', 0, 'C', true, 0, false, false, 0);
+
+
+$pdf->SetFont('helvetica', '', 10);
 // ---------------------------------------------------------
-$db = new DB();
-$taman = $db->query("SELECT * FROM taman");
-$pdf->Cover();
-$i=0;
-foreach($taman as $row){
-    if($i % 3 == 0){
-      $pdf->AddPage();
-    }
-    // set font
-    $pdf->SetFont('helvetica', 'B', 12);
-
-    $pdf->Write(0, $row['nama'], '', 0, 'C', true, 0, false, false, 0);
-    $pdf->Write(0, $row['lokasi'], '', 0, 'C', true, 0, false, false, 0);
-
-    $pdf->Write(0, '', '', 0, 'C', true, 0, false, false, 0);
-
-    $pdf->SetFont('helvetica', '', 10);
-
-// -----------------------------------------------------------------------------
-
 $tbl = '
 <table border="1" cellpadding="2" align="center">
 <thead>
  <tr>
   <th rowspan="2" width="40" align="center"><b>No.</b></th>
-  <th rowspan="2" width="140" align="center"><b>Kategori</b></th>
+  <th rowspan="2" width="140" align="center"><b>Nama Taman</b></th>
   <th colspan="4" align="center"><b>Status</b></th>
   <th rowspan="2" width="93" align="center"> <b>Total Aduan</b></th>
  </tr>
@@ -76,17 +63,21 @@ $tbl = '
 <tbody>
 ';
 
-$kategori = $db->query("SELECT * FROM kategori");
-foreach($kategori as $row2){
+$db = new DB();
+$taman = $db->query("SELECT * FROM taman");
+$i=1;
+foreach($taman as $row){
+// -----------------------------------------------------------------------------
   $tbl .= '<tr>
-              <td width="40" align="center">'.$row2['id'].'</td>
-              <td width="140">'.$row2['nama_kategori'].'</td>
+              <td width="40" align="center">'.$i.'.</td>
+              <td width="140" align="left">'.$row['nama'].'</td>
               <td></td>
               <td></td>
               <td></td>
               <td></td>
               <td width="93"></td>
            </tr>';
+  $i++;
 }
 $tbl .= '<tr>
               <td colspan="2" align="center"><b>Total Aduan</b></td>
@@ -100,12 +91,10 @@ $tbl .= '</tbody></table>';
 
     $pdf->writeHTML($tbl, true, false, false, false, '');
     $pdf->Write(10, '', '', 0, 'C', true, 0, false, false, 0);
-    $i++;
-}
 // -----------------------------------------------------------------------------
 
 //Close and output PDF document
-$pdf->Output('Laporan'.$pdf->bulan.'.pdf', 'I');
+$pdf->Output('example_048.pdf', 'I');
 
 //============================================================+
 // END OF FILE
