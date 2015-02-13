@@ -1,5 +1,7 @@
+
 <div class="container">
 
+     
       <div class="masthead">
         <nav>
           <ul class="nav nav-justified">
@@ -12,7 +14,7 @@
       
       <div class="col-md-6">
       	<img src="assets/img/aduhay-logo.png" alt="logo" id="logoHome">
-      </div>
+	  </div>
 
       <div class="col-md-6">
       <div class="jumbotron">
@@ -42,7 +44,7 @@
 			        <tbody>
 			            <tr>
 			                <td>1</td>
-			                <td>Sampah berserakan</td>
+			                <td>Sampah berserakan, daun nggak disapu, bau, jelek</td>
 			                <th>Kebersihan</th>
 			                <td>On progress</td>
 			            </tr>
@@ -54,6 +56,9 @@
 			            </tr>
 			        </tbody>
 			    </table>
+		    </div>
+		    <div class="row" id="btnGenerateLap">
+		    	<button class="btn btn-success" value="">Buat Laporan</button>
 		    </div>
 		</div>
       </form>
