@@ -7,7 +7,7 @@ switch ($page) {
 		include_once("controllers/inputCtrl.php");
 		$title = "Input Aduan";
 		$controller = new InputCtrl();
-		$controller->invoke_opsiTaman();
+		$controller->invoke_formInput();
 		break;
 
 	case "aduan":

@@ -23,19 +23,26 @@
 	    <div class="form-group">
 	      	<div class="row" id="dd_forminput">
 		      	<select class="form-control span3" id="namataman">
-		      		<option>--Pilih taman--</option>
+		      		<option value = "0">--Pilih taman--</option>
 		      		<?php
-		      			foreach ($namaTaman as $id => $taman)
+		      			// include 'models/taman.php';
+		      			// $taman = new Taman();
+		      			foreach ($namaTaman as $row)
 						{
-							echo '<option>'.$taman->nama.'</option>';
+							echo '<option value="$row[id]">'.$row['nama'].'</option>';
 						}
 		      		?>
 		      	</select>
 		      	<select class="form-control span2" id="kategori">
-		      		<option>--Pilih kategori--</option>
-		      		<option>Kebersihan</option>
-		      		<option>Keamanan</option>
-		      		<option>Infrastruktur</option>
+		      		<option value = "0">--Pilih kategori--</option>
+		      		<?php
+		      			// include 'models/taman.php';
+		      			// $taman = new Taman();
+		      			foreach ($namaKategori as $row)
+						{
+							echo '<option value="$row[id]">'.$row['nama_kategori'].'</option>';
+						}
+		      		?>
 		      	</select>
 			</div>
 			<div class="row">

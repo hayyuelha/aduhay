@@ -10,12 +10,12 @@ class InputCtrl {
         // $this->database = new DB();
     }
 
-    public function invoke_opsiTaman(){
+    public function invoke_formInput(){
     	$namaTaman = $this->model->getNamaTaman();
+        $namaKategori = $this->model->getKategori();
     	include 'views/pages/home.php';
     }
 
-	
 }
 
 ?>
