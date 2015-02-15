@@ -1,3 +1,4 @@
+
 <div class="container">
 
       <div class="masthead">
@@ -23,9 +24,12 @@
 	      	<div class="row" id="dd_forminput">
 		      	<select class="form-control span3" id="namataman">
 		      		<option>--Pilih taman--</option>
-		      		<option>Taman Jomblo</option>
-		      		<option>Taman Film</option>
-		      		<option>Taman Musik</option>
+		      		<?php
+		      			foreach ($namaTaman as $id => $taman)
+						{
+							echo '<option>'.$taman->nama.'</option>';
+						}
+		      		?>
 		      	</select>
 		      	<select class="form-control span2" id="kategori">
 		      		<option>--Pilih kategori--</option>

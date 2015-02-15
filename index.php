@@ -4,8 +4,10 @@ isset($_GET['page']) ? $page = $_GET['page'] : $page = "";
 
 switch ($page) {
 	case "input"		:
+		include_once("controllers/inputCtrl.php");
 		$title = "Input Aduan";
-		$body  = "views/pages/home.php";
+		$controller = new InputCtrl();
+		$controller->invoke_opsiTaman();
 		break;
 
 	case "aduan":
@@ -24,6 +26,6 @@ switch ($page) {
 }
 
 include("views/header.php");
-include($body);
+// include($body);
 // echo "page = [" . $page . "]";
 include("views/footer.php");
