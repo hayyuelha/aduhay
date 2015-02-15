@@ -110,7 +110,7 @@ class laporan{
 		}
 
 		//Close and output PDF document
-		$pdf->Output('Laporan'.$pdf->bulan.'.pdf', 'I');
+		$pdf->Output('Laporan '.$pdf->bulan.' '.$pdf->tahun.'.pdf', 'I');
 
     }
 
@@ -205,6 +205,9 @@ class laporan{
 		    $pdf->Write(10, '', '', 0, 'C', true, 0, false, false, 0);
 		}
 		//Close and output PDF document
-		$pdf->Output('example_048.pdf', 'I');
+	    setlocale(LC_ALL, 'IND');
+	    $bulan = strftime("%B");
+	    $tahun = date('Y');
+		$pdf->Output('Laporan '.$bulan.' '.$tahun.'.pdf', 'I');
     }
 }

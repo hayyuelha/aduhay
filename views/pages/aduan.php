@@ -72,20 +72,20 @@
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title" id="myModalLabel">Pilih Template Laporan</h4>
       </div>
+        <form action="laporan" target="_blank" role="form" method="post">
       <div class="modal-body">
-        <form role="form">
 		    <div class="radio"><label>
-		      <input type="radio" name="optradio">Template 1: Laporan aduan per taman</br><img src="assets/img/temp1.png" id="ss_temp1" alt="temp1">
+		      <input type="radio" name="optradio1">Template 1: Laporan aduan per taman</br><img src="assets/img/temp1.png" id="ss_temp1" alt="temp1">
 		    </label></div>
 		    <div class="radio"><label>
-		      <input type="radio" name="optradio">Template 2: Laporan aduan berdasarkan status</br><img src="assets/img/temp2.png" id="ss_temp2" alt="temp2">
+		      <input type="radio" name="optradio2">Template 2: Laporan aduan berdasarkan status</br><img src="assets/img/temp2.png" id="ss_temp2" alt="temp2">
 		    </label></div>
-		</form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
-        <button type="button" class="btn btn-primary">Buat laporan</button>
+        <button name="submit" type="submit" class="btn btn-primary">Buat laporan</button>
       </div>
+      </form>
     </div>
   </div>
 </div>
