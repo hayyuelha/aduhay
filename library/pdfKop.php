@@ -1,9 +1,7 @@
 <?php
-require_once('controllers/tcpdf.php');
+require_once('tcpdf.php');
 
-class MYPDF extends TCPDF {
-  public $bulan,$tahun;
-
+class pdfKop extends TCPDF {
   public function Header() {
     $this->SetFont('helvetica', '', 15);
     $this->Write(0, 'PEMERINTAH KOTA BANDUNG', '', 0, 'C', true, 0, false, false, 0);

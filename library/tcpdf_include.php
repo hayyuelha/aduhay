@@ -24,7 +24,7 @@
  */
 
 // always load alternative config file for examples
-require_once('controllers/tcpdf_config_alt.php');
+require_once('tcpdf_config_alt.php');
 
 // Include the main TCPDF library (search the library on the following directories).
 $tcpdf_include_dirs = array(
