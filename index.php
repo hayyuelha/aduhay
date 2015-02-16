@@ -12,7 +12,8 @@ switch ($page) {
 		$namaKategori = $controller->namaKategori;
 		$title = "Input Aduan";
 		if (isset($_POST['submit'])){
-			$controller->post_aduan();
+			$controller->post_aduan(); //perlu kasih if "post_aduan() berhasil" ?
+			echo '<script type="text/javascript">alert ("Aduan berhasil disimpan.");</script>';
 		}
 		$body  = "views/pages/home.php";
 		break;
