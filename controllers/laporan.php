@@ -2,12 +2,12 @@
 class laporan{
 	private $model;
  
-    public function __construct() {
+    public function __construct($bulan, $tahun) {
         require_once('library/tcpdf_include.php');
 		require_once('library/pdfCover.php');
 		require_once('library/pdfKop.php');
 		require_once('models/laporan.php');
-        $this->model = new laporan_model();
+        $this->model = new laporan_model($bulan, $tahun);
     }
 
     public function template1(){

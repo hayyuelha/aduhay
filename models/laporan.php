@@ -1,14 +1,13 @@
 <?php
 class laporan_model {
 	private $db;
+	private $bulan, $tahun;
 
-	public function __construct(){
+	public function __construct($bulan, $tahun){
 		require_once('controllers/db.php');
 		$this->db = new DB();
-	}
-
-	public function getMonths(){
-		// $bulans = $this->db->query("SELECT MONTH()");
+		$this->bulan = (int) $bulan;
+		$this->tahun = (int) $tahun;
 	}
 
 	public function getLaporanByKategoriStatus(){
@@ -20,10 +19,10 @@ class laporan_model {
 				$menunggu=0; $ditolak=0; $sedang=0; $sudah=0;
 				foreach ($kategori as $kat) {
 					$row['nama_kategori'] = $kat['nama_kategori'];
-					$row['menunggu'] = $this->db->query("SELECT COUNT(DISTINCT aduan.id) AS num FROM aduan JOIN ubah_status ON aduan.id = ubah_status.id_aduan WHERE aduan.id_status = 1 AND ubah_status.id_status = 1 AND YEAR(ubah_status.waktu) = YEAR(NOW()) AND MONTH(ubah_status.waktu) = MONTH(NOW()) AND aduan.id_taman = ".$tmn['id']." AND aduan.id_kategori = ".$kat['id'])[0]['num'];
-					$row['ditolak'] = $this->db->query("SELECT COUNT(DISTINCT aduan.id) AS num FROM aduan JOIN ubah_status ON aduan.id = ubah_status.id_aduan WHERE aduan.id_status = 2 AND ubah_status.id_status = 2 AND YEAR(ubah_status.waktu) = YEAR(NOW()) AND MONTH(ubah_status.waktu) = MONTH(NOW()) AND aduan.id_taman = ".$tmn['id']." AND aduan.id_kategori = ".$kat['id'])[0]['num'];
-					$row['sedang'] = $this->db->query("SELECT COUNT(DISTINCT aduan.id) AS num FROM aduan JOIN ubah_status ON aduan.id = ubah_status.id_aduan WHERE aduan.id_status = 3 AND ubah_status.id_status = 3 AND YEAR(ubah_status.waktu) = YEAR(NOW()) AND MONTH(ubah_status.waktu) = MONTH(NOW()) AND aduan.id_taman = ".$tmn['id']." AND aduan.id_kategori = ".$kat['id'])[0]['num'];
-					$row['sudah'] = $this->db->query("SELECT COUNT(DISTINCT aduan.id) AS num FROM aduan JOIN ubah_status ON aduan.id = ubah_status.id_aduan WHERE aduan.id_status = 4 AND ubah_status.id_status = 4 AND YEAR(ubah_status.waktu) = YEAR(NOW()) AND MONTH(ubah_status.waktu) = MONTH(NOW()) AND aduan.id_taman = ".$tmn['id']." AND aduan.id_kategori = ".$kat['id'])[0]['num'];
+					$row['menunggu'] = $this->db->query("SELECT COUNT(DISTINCT aduan.id) AS num FROM aduan JOIN ubah_status ON aduan.id = ubah_status.id_aduan WHERE aduan.id_status = 1 AND ubah_status.id_status = 1 AND YEAR(ubah_status.waktu) = ".$this->tahun." AND MONTH(ubah_status.waktu) = ".$this->bulan." AND aduan.id_taman = ".$tmn['id']." AND aduan.id_kategori = ".$kat['id'])[0]['num'];
+					$row['ditolak'] = $this->db->query("SELECT COUNT(DISTINCT aduan.id) AS num FROM aduan JOIN ubah_status ON aduan.id = ubah_status.id_aduan WHERE aduan.id_status = 2 AND ubah_status.id_status = 2 AND YEAR(ubah_status.waktu) = ".$this->tahun." AND MONTH(ubah_status.waktu) = ".$this->bulan." AND aduan.id_taman = ".$tmn['id']." AND aduan.id_kategori = ".$kat['id'])[0]['num'];
+					$row['sedang'] = $this->db->query("SELECT COUNT(DISTINCT aduan.id) AS num FROM aduan JOIN ubah_status ON aduan.id = ubah_status.id_aduan WHERE aduan.id_status = 3 AND ubah_status.id_status = 3 AND YEAR(ubah_status.waktu) = ".$this->tahun." AND MONTH(ubah_status.waktu) = ".$this->bulan." AND aduan.id_taman = ".$tmn['id']." AND aduan.id_kategori = ".$kat['id'])[0]['num'];
+					$row['sudah'] = $this->db->query("SELECT COUNT(DISTINCT aduan.id) AS num FROM aduan JOIN ubah_status ON aduan.id = ubah_status.id_aduan WHERE aduan.id_status = 4 AND ubah_status.id_status = 4 AND YEAR(ubah_status.waktu) = ".$this->tahun." AND MONTH(ubah_status.waktu) = ".$this->bulan." AND aduan.id_taman = ".$tmn['id']." AND aduan.id_kategori = ".$kat['id'])[0]['num'];
 					$row['total'] = $row['menunggu'] + $row['ditolak'] + $row['sedang'] + $row['sudah'];
 					array_push($tmn, $row);
 					$menunggu += $row['menunggu'];
@@ -49,10 +48,10 @@ class laporan_model {
 		if ($taman){
 			foreach ($taman as $row) {
 				$temp = $row;
-				$temp['menunggu'] = $this->db->query("SELECT COUNT(DISTINCT aduan.id) AS num FROM aduan JOIN ubah_status ON aduan.id = ubah_status.id_aduan WHERE aduan.id_status = 1 AND ubah_status.id_status = 1 AND YEAR(ubah_status.waktu) = YEAR(NOW()) AND MONTH(ubah_status.waktu) = MONTH(NOW()) AND aduan.id_taman = ".$row['id'])[0]['num'];
-				$temp['ditolak'] = $this->db->query("SELECT COUNT(DISTINCT aduan.id) AS num FROM aduan JOIN ubah_status ON aduan.id = ubah_status.id_aduan WHERE aduan.id_status = 2 AND ubah_status.id_status = 2 AND YEAR(ubah_status.waktu) = YEAR(NOW()) AND MONTH(ubah_status.waktu) = MONTH(NOW()) AND aduan.id_taman = ".$row['id'])[0]['num'];
-				$temp['sedang'] = $this->db->query("SELECT COUNT(DISTINCT aduan.id) AS num FROM aduan JOIN ubah_status ON aduan.id = ubah_status.id_aduan WHERE aduan.id_status = 3 AND ubah_status.id_status = 3 AND YEAR(ubah_status.waktu) = YEAR(NOW()) AND MONTH(ubah_status.waktu) = MONTH(NOW()) AND aduan.id_taman = ".$row['id'])[0]['num'];
-				$temp['sudah'] = $this->db->query("SELECT COUNT(DISTINCT aduan.id) AS num FROM aduan JOIN ubah_status ON aduan.id = ubah_status.id_aduan WHERE aduan.id_status = 4 AND ubah_status.id_status = 4 AND YEAR(ubah_status.waktu) = YEAR(NOW()) AND MONTH(ubah_status.waktu) = MONTH(NOW()) AND aduan.id_taman = ".$row['id'])[0]['num'];
+				$temp['menunggu'] = $this->db->query("SELECT COUNT(DISTINCT aduan.id) AS num FROM aduan JOIN ubah_status ON aduan.id = ubah_status.id_aduan WHERE aduan.id_status = 1 AND ubah_status.id_status = 1 AND YEAR(ubah_status.waktu) = ".$this->tahun." AND MONTH(ubah_status.waktu) = ".$this->bulan." AND aduan.id_taman = ".$row['id'])[0]['num'];
+				$temp['ditolak'] = $this->db->query("SELECT COUNT(DISTINCT aduan.id) AS num FROM aduan JOIN ubah_status ON aduan.id = ubah_status.id_aduan WHERE aduan.id_status = 2 AND ubah_status.id_status = 2 AND YEAR(ubah_status.waktu) = ".$this->tahun." AND MONTH(ubah_status.waktu) = ".$this->bulan." AND aduan.id_taman = ".$row['id'])[0]['num'];
+				$temp['sedang'] = $this->db->query("SELECT COUNT(DISTINCT aduan.id) AS num FROM aduan JOIN ubah_status ON aduan.id = ubah_status.id_aduan WHERE aduan.id_status = 3 AND ubah_status.id_status = 3 AND YEAR(ubah_status.waktu) = ".$this->tahun." AND MONTH(ubah_status.waktu) = ".$this->bulan." AND aduan.id_taman = ".$row['id'])[0]['num'];
+				$temp['sudah'] = $this->db->query("SELECT COUNT(DISTINCT aduan.id) AS num FROM aduan JOIN ubah_status ON aduan.id = ubah_status.id_aduan WHERE aduan.id_status = 4 AND ubah_status.id_status = 4 AND YEAR(ubah_status.waktu) = ".$this->tahun." AND MONTH(ubah_status.waktu) = ".$this->bulan." AND aduan.id_taman = ".$row['id'])[0]['num'];
 				$temp['total'] = $temp['menunggu'] + $temp['ditolak'] + $temp['sedang'] + $temp['sudah'];
 				$totmenunggu += $temp['menunggu'];
 				$totditolak += $temp['ditolak'];
@@ -86,7 +85,7 @@ class laporan_model {
 				$temp['total'] = 0;
 				$kat=1;
 				foreach ($result['kategori'] as $rec) {
-					$temp['kategori'.$kat] = $this->db->query("SELECT COUNT(DISTINCT id) AS num FROM aduan WHERE id_kategori = ".$kat." AND YEAR(waktu) = YEAR(NOW()) AND MONTH(waktu) = MONTH(NOW()) AND aduan.id_taman = ".$row['id'])[0]['num'];
+					$temp['kategori'.$kat] = $this->db->query("SELECT COUNT(DISTINCT id) AS num FROM aduan WHERE id_kategori = ".$kat." AND YEAR(waktu) = ".$this->tahun." AND MONTH(waktu) = ".$this->bulan." AND id_taman = ".$row['id'])[0]['num'];
 					$temp['total'] += $temp['kategori'.$kat];
 					$result['kategori'.$kat] += $temp['kategori'.$kat];
 					$kat++; 

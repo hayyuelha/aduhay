@@ -24,7 +24,9 @@ switch ($page) {
 	case "laporan":
 		$title = "Laporan";
 		require_once('controllers/laporan.php');
-		$laporan = new laporan();
+		$bulan = $_POST['bulan'];
+		$tahun = $_POST['tahun'];
+		$laporan = new laporan($bulan, $tahun);
 		if(isset($_POST['optradio1'])){
 			echo $laporan->template1();	
 		} else if (isset($_POST['optradio2'])){

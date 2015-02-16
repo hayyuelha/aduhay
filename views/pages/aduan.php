@@ -75,7 +75,7 @@
       <form action="laporan" target="_blank" role="form" method="post">
       <div class="modal-body">
 		    <div class="row">
-		      	<select class="form-control span2" id="bulan">
+		      	<select class="form-control span2" id="bulan" name="bulan">
 		      		<option value="0">--Pilih Bulan--</option>
 		      		<option value="1">Januari</option>
 		      		<option value="2">Februari</option>
@@ -90,7 +90,7 @@
 		      		<option value="11">November</option>
 		      		<option value="12">Desember</option>
 		      	</select>
-		      	<select class="form-control span2" id="tahun">
+		      	<select class="form-control span2" id="tahun" name="tahun">
 		      		<option value="0">--Pilih Tahun--</option>
 		      		<option value="1">2015</option>
 		      	</select>
