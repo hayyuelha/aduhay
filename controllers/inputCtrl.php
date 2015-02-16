@@ -3,6 +3,9 @@ include_once("models/model.php");
 
 class InputCtrl {
 	public $model;
+    public $namaTaman;
+    public $namaKategori;
+
 	// public $database;
 	public function __construct()  
     {  
@@ -11,9 +14,9 @@ class InputCtrl {
     }
 
     public function invoke_formInput(){
-    	$namaTaman = $this->model->getNamaTaman();
-        $namaKategori = $this->model->getKategori();
-    	include 'views/pages/home.php';
+    	$this->namaTaman = $this->model->getNamaTaman();
+        $this->namaKategori = $this->model->getKategori();
+    	// include 'views/pages/home.php';
     }
 
     public function post_aduan(){

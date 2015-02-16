@@ -6,7 +6,7 @@ class DB {
 
 	public function __construct() {
 		// load database configuration
-		$config = require_once("db_config.php");
+		$config = require("db_config.php");
 
 		// create connection
 		$this->db = mysqli_connect($config["host"], $config["username"], $config["password"], $config["database"]);
@@ -28,6 +28,20 @@ class DB {
 		if (!$result) {
 			die("Error " . mysqli_errno($this->db) . ": " . mysqli_error($this->db));
 		}
+		// convert it into array
+		$result_arr = array();
+		while ($row = $result->fetch_assoc()) {
+			array_push($result_arr, $row);
+		}
+		return $result_arr;
+	}
+	
+	public function select($sql) {
+		// perform a query
+		$result = $this->db->query($sql);
+		if (!$result) {
+			die("Error " . mysqli_errno($this->db) . ": " . mysqli_error($this->db));
+		}
 
 		// convert it into array
 		$result_arr = array();
@@ -36,5 +50,24 @@ class DB {
 		}
 
 		return $result_arr;
+	}
+
+	public function insert($sql) {
+		// perform a query
+		$result = $this->db->query($sql);
+		if (!$result) {
+			die("Error: " . mysqli_error($this->db));
+		}
+
+		// return its id
+		return $this->db->insert_id;
+	}
+
+	public function update($sql) {
+		// perform a query
+		$result = $this->db->query($sql);
+		if (!$result) {
+			die("Error: " . mysqli_error($this->db));
+		}
 	}
 }
