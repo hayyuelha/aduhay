@@ -3,14 +3,18 @@
 isset($_GET['page']) ? $page = $_GET['page'] : $page = "";
 
 switch ($page) {
-	case "input"		:
+
+	case "home"		:
 		include_once("controllers/inputCtrl.php");
 		$title = "Input Aduan";
 		$controller = new InputCtrl();
 		$controller->invoke_formInput();
+		$namaTaman = $controller->namaTaman;
+		$namaKategori = $controller->namaKategori;
 		if (isset($_POST['submit'])){
 			$controller->post_aduan();
 		}
+		$body  = "views/pages/home.php";
 		break;
 
 	case "aduan":
@@ -40,6 +44,6 @@ switch ($page) {
 }
 
 include("views/header.php");
-// include($body);
+include($body);
 // echo "page = [" . $page . "]";
 include("views/footer.php");

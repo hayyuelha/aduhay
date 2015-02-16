@@ -1,4 +1,3 @@
-
 <div class="container">
 
       <div class="masthead">
@@ -9,7 +8,6 @@
           </ul>
         </nav>
       </div>
-
       
       <div class="col-md-6">
       	<img src="assets/img/aduhay-logo.png" alt="logo" id="logoHome">
@@ -19,7 +17,7 @@
       <div class="jumbotron">
         <h1>Input Aduan</h1>
       </div>
-      <form method="post" action="input">
+      <form method="post" action="home">
 	    <div class="form-group">
 	      	<div class="row" id="dd_forminput">
 		      	<select class="form-control span3" id="namataman" name="namataman">
@@ -29,7 +27,7 @@
 		      			// $taman = new Taman();
 		      			foreach ($namaTaman as $row)
 						{
-							echo '<option value="$row[id]">'.$row['nama'].'</option>';
+							echo '<option value="'.$row['id'].'">'.$row['nama'].'</option>';
 						}
 		      		?>
 		      	</select>
@@ -40,7 +38,7 @@
 		      			// $taman = new Taman();
 		      			foreach ($namaKategori as $row)
 						{
-							echo '<option value="$row[id]">'.$row['nama_kategori'].'</option>';
+							echo '<option value="'.$row['id'].'">'.$row['nama_kategori'].'</option>';
 						}
 		      		?>
 		      	</select>
@@ -50,7 +48,7 @@
 			</div>
 			<div class="row" id="btnGrp">
 				<button class="btn btn-default span2" value="submit" id="btn_foto">Tautkan Foto</button>	
-				<button class="btn btn-success span2" value="submit" id="btn_adukan">Adukan</button>
+				<button class="btn btn-success span2" name="submit" value="submit" id="btn_adukan">Adukan</button>
 			</div>
 		</div>
       </form>
