@@ -4,7 +4,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="../../favicon.ico">
+    <link rel="icon" href="assets/img/favicon.png" type="image/png" sizes="16x16 32x32">
+    
 
     <title><?php echo $title; ?></title>
 
