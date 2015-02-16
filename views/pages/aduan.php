@@ -5,7 +5,7 @@
       <div class="masthead">
         <nav>
           <ul class="nav nav-justified">
-            <li><a href="input">Input Aduan</a></li>
+            <li><a href="home">Input Aduan</a></li>
             <li class="active"><a href="aduan">Daftar Aduan</a></li>
           </ul>
         </nav>
