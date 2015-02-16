@@ -22,10 +22,18 @@ class Model {
 		$dataKategori = $this->openDB->query($sql);		
 		return $dataKategori;
 	}
+
+	public function getAduan() {
+    	$sql = "SELECT aduan.*, taman.nama AS taman, kategori.nama_kategori AS kategori, status.nama_status AS status " .
+    			"FROM aduan, taman, kategori, status WHERE " .
+    			"aduan.id_taman = taman.id AND aduan.id_kategori = kategori.id AND aduan.id_status = status.id";
+    	return $this->openDB->select($sql);
+    }
 	
 	public function insertAduan($deskripsi, $id_kategori, $id_taman){
-		$sql = "INSERT INTO aduan (waktu, deskripsi, id_kategori, id_status, id_taman) VALUES (NOW(), $deskripsi, $id_kategori, 1, $id_taman)";
-		$result = $this->openDB->query($sql);
+		$sql = "INSERT INTO `aduan`(`deskripsi`, `id_kategori`, `id_status`, `id_taman`, `waktu`) VALUES ('" . $deskripsi . "', " . $id_kategori . ", 1, " . $id_taman . ", NOW())";
+        $db = new DB();
+        $db->insert($sql);
 	}
 }
 

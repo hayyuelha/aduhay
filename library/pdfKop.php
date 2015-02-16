@@ -18,8 +18,8 @@ class pdfKop extends TCPDF {
   }
 
   public function Footer() {
-    setlocale (LC_TIME, 'id_ID');
-    $date = strftime( "%A, %d %B %Y %H:%M", time());
+    setlocale(LC_ALL, 'IND');
+    $date = strftime( "%A, %d %B %Y", time());
     $this->Line(10, 282, 200, 282, array());
     $this->SetFont('helvetica', '', 9);
     $this->SetY(-15);
