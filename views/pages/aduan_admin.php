@@ -1,30 +1,34 @@
-<img src="assets/img/aduhay-logo.png" style="width: 15%; height: auto; z-index: 2; padding-left: 10px; margin-top: -5px">
-<nav class="navbar navbar-default navbar-static-top" style="z-index: 1; margin-top: -72px">
-      
-      <div class="container">
+<?php
 
-        <div class="navbar-header">
-          
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-        </div>
-        <div id="navbar" class="navbar-collapse collapse">
-          <ul class="nav navbar-nav navbar-right">
-            <li><a href="home">Input Aduan</a></li>
-            <li class="active"><a href="aduan">Daftar Aduan</a></li>
-          </ul>
-        </div><!--/.nav-collapse -->
-      </div>
-</nav>
+/*** begin the session ***/
+session_start();
+
+?>
+
+
+<?php if(!isset($_SESSION['user_id'])) : ?>
+
+	Harus login dulu bero
+
+<?php else: ?>
 
 <div class="container">
 
-      <div class="col-md-10 col-md-offset-1">
+     
+      <div class="masthead">
+        <nav>
+          <ul class="nav nav-justified">
+            <li><a href="home">Input Aduan</a></li>
+            <li class="active"><a href="aduan">Daftar Aduan</a></li>
+          </ul>
+        </nav>
+      </div>
+      
+      <div class="col-md-4">
+      	<img src="assets/img/aduhay-logo.png" alt="logo" id="logoHome">
+	  </div>
 
+      <div class="col-md-8">
       <div class="jumbotron">
         <h1>Daftar Aduan</h1>
       </div>
@@ -168,3 +172,5 @@
 			});
 		});
 	</script>
+
+<?php endif ?>

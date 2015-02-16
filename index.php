@@ -3,6 +3,24 @@
 isset($_GET['page']) ? $page = $_GET['page'] : $page = "";
 
 switch ($page) {
+	case "aduan_admin" :
+		require_once("controllers/aduanCtrl.php");
+		$controller = new AduanCtrl();
+		$controller->getAllData();
+    	$namaTaman = $controller->namaTaman;
+    	$namaKategori = $controller->namaKategori;
+    	$allAduan = $controller->allAduan;
+		$title = "Daftar Aduan";
+		$body = "views/pages/aduan_admin.php";
+		break;
+
+	case "islogin" :
+		$body = "views/pages/islogin.php";
+		break;
+		
+	case "loginsubmit" :
+		$body = "views/pages/login_submit.php";
+		break;
 
 	case "home"		:
 		include_once("controllers/inputCtrl.php");
