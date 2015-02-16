@@ -91,7 +91,7 @@ else
                 $_SESSION['user_id'] = $user_id;
 
                 /*** tell the user we are logged in ***/
-                $message = 'You are now logged in <a href="aduan_admin">click here</a>';
+                $message = 'You are now logged in <a href="aduan">click here</a>';
         }
 
 
