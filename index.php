@@ -6,11 +6,11 @@ switch ($page) {
 
 	case "home"		:
 		include_once("controllers/inputCtrl.php");
-		$title = "Input Aduan";
 		$controller = new InputCtrl();
 		$controller->invoke_formInput();
 		$namaTaman = $controller->namaTaman;
 		$namaKategori = $controller->namaKategori;
+		$title = "Input Aduan";
 		if (isset($_POST['submit'])){
 			$controller->post_aduan(); //perlu kasih if "post_aduan() berhasil" ?
 			echo '<script type="text/javascript">alert ("Aduan berhasil disimpan.");</script>';
@@ -19,6 +19,12 @@ switch ($page) {
 		break;
 
 	case "aduan":
+		require_once("controllers/aduanCtrl.php");
+		$controller = new AduanCtrl();
+		$controller->getAllData();
+    	$namaTaman = $controller->namaTaman;
+    	$namaKategori = $controller->namaKategori;
+    	$allAduan = $controller->allAduan;
 		$title = "Daftar Aduan";
 		$body  = "views/pages/aduan.php";
 		break;
