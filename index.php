@@ -49,6 +49,11 @@ switch ($page) {
 		}
 		break;
 
+	case "coba":
+		$title = "Laman Coba-coba";
+		$body = "views/pages/coba.php";
+		break;
+
 	default:
 		$title = "Error";
 		$body  = "views/pages/error.php";
