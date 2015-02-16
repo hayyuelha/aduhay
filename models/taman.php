@@ -10,7 +10,7 @@ class Taman {
         $this->id = $id;
 	    $this->nama = $nama;
 	    $this->lokasi = $lokasi;
-    } 
+    }
 }
 
 ?>

@@ -1,5 +1,7 @@
 <?php
 
+require_once("/../../controllers/db.php");
+
 class Aduan {
 	public $id;
 	public $waktu;
@@ -14,7 +16,13 @@ class Aduan {
 	    $this->id_kategori = $id_kategori;
 	    $this->id_taman = $id_taman;
 	    $this->id_status = 1;
-    } 
+    }
+
+    public function getAll() {
+    	$db = new DB();
+    	$sql = "SELECT * FROM `aduan`";
+    	$return $db->select($sql);
+    }
 }
 
 ?>
