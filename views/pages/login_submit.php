@@ -12,28 +12,38 @@ if(isset( $_SESSION['user_id'] ))
 if(!isset( $_POST['username'], $_POST['password']))
 {
     $message = 'Please enter a valid username and password';
+    $_SESSION['message'] = $message;
+    header("Location: login");
 }
 /*** check the username is the correct length ***/
 elseif (strlen( $_POST['username']) > 20 || strlen($_POST['username']) < 4)
 {
     $message = 'Incorrect Length for Username';
+    $_SESSION['message'] = $message;
+    header("Location: login");
 }
 /*** check the password is the correct length ***/
 elseif (strlen( $_POST['password']) > 20 || strlen($_POST['password']) < 4)
 {
     $message = 'Incorrect Length for Password';
+    $_SESSION['message'] = $message;
+    header("Location: login");
 }
 /*** check the username has only alpha numeric characters ***/
 elseif (ctype_alnum($_POST['username']) != true)
 {
     /*** if there is no match ***/
     $message = "Username must be alpha numeric";
+    $_SESSION['message'] = $message;
+    header("Location: login");
 }
 /*** check the password has only alpha numeric characters ***/
 elseif (ctype_alnum($_POST['password']) != true)
 {
         /*** if there is no match ***/
         $message = "Password must be alpha numeric";
+        $_SESSION['message'] = $message;        
+        header("Location: login");
 }
 else
 {
@@ -82,7 +92,9 @@ else
         /*** if we have no result then fail boat ***/
         if($user_id == false)
         {
-                $message = 'Login Failed';
+                $message = 'Wrong username or password';
+                $_SESSION['message'] = $message;
+                header("Location: login");
         }
         /*** if we do have a result, all is well ***/
         else
@@ -91,7 +103,11 @@ else
                 $_SESSION['user_id'] = $user_id;
 
                 /*** tell the user we are logged in ***/
-                $message = 'You are now logged in <a href="aduan">click here</a>';
+
+                    header("Location: aduan");
+
+                
+
         }
 
 

@@ -1,8 +1,6 @@
-<?php
-    session_start();
-    session_unset();
-    session_destroy();
-?>
+
+<?php session_start(); ?>
+
 
 <section id="login">
     <div class="container">
@@ -12,7 +10,13 @@
 	    	</div>
     	    <div class="col-xs-12">
         	    <div class="form-wrap">
-                <h1>Login</h1>
+                    <?php if(isset($_SESSION['message'])):?>
+                        <div class="alert alert-warning">
+                            <a href="#" class="close" data-dismiss="alert">&times;</a>
+                                <?php echo $_SESSION['message']?>
+                        </div>
+                    <?php endif?>  
+                    <h1>Login</h1>
                     <form role="form" action="loginsubmit" method="post" id="login-form" autocomplete="off">
                         <div class="form-group">
                             <label for="email" class="sr-only">Username</label>
@@ -55,3 +59,5 @@
 	</div> <!-- /.modal-dialog -->
 </div> <!-- /.modal -->
 
+    <script type="text/javascript" language="javascript" src="//code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" language="javascript" src="assets/js/bootstrap.js"></script>
