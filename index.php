@@ -3,7 +3,8 @@
 isset($_GET['page']) ? $page = $_GET['page'] : $page = "";
 
 switch ($page) {
-	case ""		:
+	/* Pages */
+	case "":
 		$title = "Home";
 		$body  = "views/pages/home.php";
 		break;
@@ -17,6 +18,11 @@ switch ($page) {
 		$title = "Login";
 		$body  = "views/pages/login.php";
 		break;
+
+	/* Forms */
+	case "input_aduan":
+		include("controllers/input_aduan.php");
+		exit(0);
 
 	default:
 		$title = "Error";

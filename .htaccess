@@ -6,5 +6,5 @@
 	RewriteCond %{REQUEST_FILENAME} !-f
 
 	# Rewrite any pages to index.php?page=url
-	RewriteRule ^([a-zA-Z0-9/]+)/?$ index.php?page=$1 [NC,L]
+	RewriteRule ^([a-zA-Z0-9_/]+)/?$ index.php?page=$1 [NC,L]
 </IfModule>
