@@ -1,6 +1,6 @@
-<img src="assets/img/aduhay-logo.png" style="width: 15%; height: auto; z-index: 2; padding-left: 10px; margin-top: -5px">
-<nav class="navbar navbar-default navbar-static-top" style="z-index: 1; margin-top: -72px">
-      
+<img src="assets/img/aduhay-logo.png" style="width: 22%; height: auto; padding-left: 97px; margin-top: -5px; z-index: 100; position: relative;">
+<nav class="navbar navbar-default navbar-static-top" style="margin-top: -72px; z-index:0;">
+           
       <div class="container">
 
         <div class="navbar-header">
@@ -13,7 +13,7 @@
           </button>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
-          <ul class="nav navbar-nav navbar-right">
+          <ul class="nav navbar-nav navbar-right" id="navbarBtn">
             <li><a href="home">Input Aduan</a></li>
             <li class="active"><a href="aduan">Daftar Aduan</a></li>
           </ul>

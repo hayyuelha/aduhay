@@ -139,3 +139,7 @@ body {
 .btn-custom:focus {
     color: #fff;
 }
+
+#navbarBtn{
+    padding-right: 75px;
+}    
