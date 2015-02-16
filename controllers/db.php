@@ -70,4 +70,6 @@ class DB {
 			die("Error: " . mysqli_error($this->db));
 		}
 	}
+
+	
 }

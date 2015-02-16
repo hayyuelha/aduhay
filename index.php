@@ -42,6 +42,7 @@ switch ($page) {
 		$controller->getAllData();
     	$namaTaman = $controller->namaTaman;
     	$namaKategori = $controller->namaKategori;
+    	$numOfAduan = $controller->numOfAduan;
     	$allAduan = $controller->allAduan;
 		$title = "Daftar Aduan";
 		$body  = "views/pages/aduan.php";

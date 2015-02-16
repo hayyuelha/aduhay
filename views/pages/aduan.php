@@ -23,13 +23,15 @@
             <?php if(isset( $_SESSION['user_id'] ))
 				{
 				    echo '<li><a href="login">Logout</a></li>';
-				}
+				    echo '<li class="active"><a href="aduan">Daftar Aduan
+             <span class="badge">'.$numOfAduan.'</span> </a></li>';				}
 				else {
 					echo '<li><a href="home">Input Aduan</a></li>';
+					echo '<li class="active"><a href="aduan">Daftar Aduan</a></li>';
 				}
 			?>
             
-            <li class="active"><a href="aduan">Daftar Aduan</a></li>
+
           </ul>
         </div><!--/.nav-collapse -->
       </div>

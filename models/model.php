@@ -35,6 +35,20 @@ class Model {
         $db = new DB();
         $db->insert($sql);
 	}
+
+	public function countNewAduanTaman($id_taman){
+		$sql = "SELECT count( id ) AS num FROM aduan WHERE id_taman = ".$id_taman." AND id_status =1";
+		$db = new DB();
+		$count = $db->query($sql)[0]['num'];
+		return $count;
+	}
+
+	public function countNewAduan(){
+		$sql = "SELECT count( id ) AS num FROM aduan WHERE id_status =1";
+		$db = new DB();
+		$count = $db->query($sql)[0]['num'];
+		return $count;
+	}
 }
 
 ?>
