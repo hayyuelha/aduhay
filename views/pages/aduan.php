@@ -72,7 +72,10 @@
 			                <td><?php echo $aduan['deskripsi']?></td>
 			                <th><?php echo $aduan['kategori']?></th>
 			                <th><?php echo $aduan['waktu']?></th>
-			                <td><?php echo $aduan['status']?></td>
+			                <td><?php echo $aduan['status']?>
+			                	<a href="#" data-toggle="modal" data-target="#ubah-status-modal">
+			                	<span class='fa fa-pencil'></span>
+			                </td>
 			            </tr>			        		
 			        <?php } ?>
 			        </tbody>
@@ -129,6 +132,63 @@
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
         <button name="submit" type="submit" class="btn btn-primary">Buat laporan</button>
+      </div>
+      </form>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="ubah-status-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Ubah Status</h4>
+      </div>
+      <form action="" role="form" method="post">
+      <div class="modal-body">
+      	<table border="0" style="width:100%">
+		  <tr>
+		    <td width="140">ID Aduan</td>
+		    <td width="15" align="left">:</td>
+		    <td>123</td> 
+		  </tr>
+		  <tr>
+		    <td width="140">Deskripsi Aduan</td>
+		    <td width="15" align="left">:</td>
+		    <td>Haloooooooooooooo</td> 
+		  </tr>
+		  <tr>
+		    <td width="140">Taman</td>
+		    <td width="15" align="left">:</td>
+		    <td>Taman Ganesha</td> 
+		  </tr>
+		  <tr>
+		    <td width="140">Status Sekarang</td>
+		    <td width="15" align="left">:</td>
+		    <td>Menunggu Konfirmasi</td> 
+		  </tr>
+		  <tr>
+		    <td width="140">Opsi Ubah status</td>
+		    <td width="15" align="left">:</td>
+		    <td></td> 
+		  </tr>
+		</table>
+	    <div style="padding-left: 40px" class="radio"><label>
+	      <input type="radio" value="1" name="status-radio">Menunggu Konfirmasi</br>
+	    </label></div>
+	    <div style="padding-left: 40px" class="radio"><label>
+	      <input type="radio" value="2" name="status-radio">Ditolak</br>
+	    </label></div>
+	    <div style="padding-left: 40px" class="radio"><label>
+	      <input type="radio" value="3" name="status-radio">Sedang Ditanggapi</br>
+	    </label></div>
+	    <div style="padding-left: 40px" class="radio"><label>
+	      <input type="radio" value="4" name="status-radio">Sudah Ditanggulangi</br>
+	    </label></div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
+        <button name="submit" type="submit" class="btn btn-primary">Simpan</button>
       </div>
       </form>
     </div>
