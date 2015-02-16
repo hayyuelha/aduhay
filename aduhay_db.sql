@@ -3,12 +3,13 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 13, 2015 at 03:50 AM
+-- Generation Time: Feb 16, 2015 at 07:14 AM
 -- Server version: 5.6.21
 -- PHP Version: 5.6.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
+
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -19,7 +20,6 @@ SET time_zone = "+00:00";
 -- Database: `aduhay_db`
 --
 
-USE `aduhay_db`;
 -- --------------------------------------------------------
 
 --
@@ -46,7 +46,36 @@ CREATE TABLE IF NOT EXISTS `aduan` (
   `id_kategori` int(11) NOT NULL,
   `id_status` int(11) NOT NULL,
   `id_taman` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `aduan`
+--
+
+INSERT INTO `aduan` (`id`, `waktu`, `deskripsi`, `id_kategori`, `id_status`, `id_taman`) VALUES
+(1, '2015-02-16 11:31:45', 'Kok belum dibuka-buka ya tamannya.', 5, 1, 2),
+(2, '2015-02-16 13:02:14', 'Kursinya kok gak ada', 1, 1, 2),
+(3, '2015-02-16 13:02:44', 'Kayaknya yang ke sini yang pacaran deh, bukan jomblo', 5, 1, 3),
+(4, '2015-02-16 13:03:14', 'Gak tau ada di mana. Mungkin bisa dishare lokasinya ada di mana', 5, 1, 1),
+(5, '2015-02-16 13:03:45', 'Tempat sampahnya kurang', 1, 1, 1),
+(6, '2015-02-16 13:03:58', 'Tempat sampah penuh', 2, 1, 1),
+(7, '2015-02-16 13:04:36', 'Ada pasangan yang bertengkar', 3, 1, 1),
+(8, '2015-02-16 13:04:49', 'Ada penunggunya ya?', 3, 1, 1),
+(9, '2015-02-16 13:05:59', 'Bunga-bunganya ditambahin dong', 4, 1, 1),
+(10, '2015-02-16 13:06:33', 'Ada monyet!!!\r\n', 4, 1, 2),
+(11, '2015-02-16 13:06:48', 'Ada tumpukan sampah di pojok. ', 2, 1, 2),
+(12, '2015-02-16 13:07:00', 'Ayunannya rusak', 1, 1, 2),
+(13, '2015-02-16 13:07:14', 'kolam gak bening', 2, 1, 2),
+(14, '2015-02-16 13:07:45', 'Ada monyet tarung', 3, 1, 2),
+(15, '2015-02-16 13:09:40', 'Tolong disediain pancingan buat mancing ikan', 1, 1, 2),
+(16, '2015-02-16 13:09:53', 'Ada bangkai di kolam', 4, 1, 2),
+(17, '2015-02-16 13:10:03', 'Mau ikan di kolamnya', 4, 1, 2),
+(18, '2015-02-16 13:10:16', 'Mau ikan louhan di kolamnya', 4, 1, 2),
+(19, '2015-02-16 13:11:17', 'Mau vending machine berisi minuman', 1, 1, 4),
+(20, '2015-02-16 13:11:44', 'Bisa nyumbang foto gak ya?', 5, 1, 7),
+(21, '2015-02-16 13:12:16', 'Sepertinya perlu superhero beneran deh di sini', 3, 1, 11),
+(22, '2015-02-16 13:12:33', 'mau power rangers', 5, 1, 11),
+(23, '2015-02-16 13:13:09', 'Lucu banget alat fitnessnya', 1, 1, 19);
 
 -- --------------------------------------------------------
 
@@ -199,7 +228,7 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `aduan`
 --
 ALTER TABLE `aduan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=24;
 --
 -- AUTO_INCREMENT for table `kategori`
 --
