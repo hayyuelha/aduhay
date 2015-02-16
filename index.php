@@ -8,6 +8,9 @@ switch ($page) {
 		$title = "Input Aduan";
 		$controller = new InputCtrl();
 		$controller->invoke_formInput();
+		if (isset($_POST['submit'])){
+			$controller->post_aduan();
+		}
 		break;
 
 	case "aduan":
@@ -37,6 +40,6 @@ switch ($page) {
 }
 
 include("views/header.php");
-include($body);
+// include($body);
 // echo "page = [" . $page . "]";
 include("views/footer.php");

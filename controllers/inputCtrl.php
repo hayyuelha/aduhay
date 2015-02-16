@@ -17,6 +17,10 @@ class InputCtrl {
     }
 
     public function post_aduan(){
+        $deskripsi = $_POST['deskripsi'];
+        $id_taman = $_POST['namataman'];
+        $id_kategori = $_POST['kategori'];
+        $this->model->insertAduan($deskripsi, $id_kategori, $id_taman);
         
     }
 }

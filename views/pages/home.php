@@ -19,10 +19,10 @@
       <div class="jumbotron">
         <h1>Input Aduan</h1>
       </div>
-      <form>
+      <form method="post" action="input">
 	    <div class="form-group">
 	      	<div class="row" id="dd_forminput">
-		      	<select class="form-control span3" id="namataman">
+		      	<select class="form-control span3" id="namataman" name="namataman">
 		      		<option value = "0">--Pilih taman--</option>
 		      		<?php
 		      			// include 'models/taman.php';
@@ -33,7 +33,7 @@
 						}
 		      		?>
 		      	</select>
-		      	<select class="form-control span2" id="kategori">
+		      	<select class="form-control span2" id="kategori" name="kategori">
 		      		<option value = "0">--Pilih kategori--</option>
 		      		<?php
 		      			// include 'models/taman.php';
@@ -46,7 +46,7 @@
 		      	</select>
 			</div>
 			<div class="row">
-				<textarea class="form-control" rows="5" id="deskripsi" placeholder="Deskripsi aduan"></textarea> 
+				<textarea class="form-control" rows="5" id="deskripsi" name="deskripsi" placeholder="Deskripsi aduan"></textarea> 
 			</div>
 			<div class="row" id="btnGrp">
 				<button class="btn btn-default span2" value="submit" id="btn_foto">Tautkan Foto</button>	
