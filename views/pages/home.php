@@ -8,7 +8,6 @@
           </ul>
         </nav>
       </div>
-
       
       <div class="col-md-6">
       	<img src="assets/img/aduhay-logo.png" alt="logo" id="logoHome">

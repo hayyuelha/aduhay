@@ -22,6 +22,20 @@ class DB {
 		$this->db->close();
 	}
 
+	public function query($sql) {
+		// perform a query
+		$result = $this->db->query($sql);
+		if (!$result) {
+			die("Error " . mysqli_errno($this->db) . ": " . mysqli_error($this->db));
+		}
+		// convert it into array
+		$result_arr = array();
+		while ($row = $result->fetch_assoc()) {
+			array_push($result_arr, $row);
+		}
+		return $result_arr;
+	}
+	
 	public function select($sql) {
 		// perform a query
 		$result = $this->db->query($sql);

@@ -9,7 +9,9 @@ switch ($page) {
 		$title = "Input Aduan";
 		$controller = new InputCtrl();
 		$controller->invoke_formInput();
-		$body  = "views/pages/home.php";		
+		$namaTaman = $controller->namaTaman;
+		$namaKategori = $controller->namaKategori;
+		$body  = "views/pages/home.php";
 		break;
 
 	case "aduan":
