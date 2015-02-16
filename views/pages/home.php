@@ -20,7 +20,7 @@
       </div>
 </nav>
 
-<div class="container">
+<div class="container" id="bg">
 
       
       <div class="col-md-6 col-md-offset-3">
