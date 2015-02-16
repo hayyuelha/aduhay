@@ -42,9 +42,13 @@ switch ($page) {
 	case "aduan":
 		require_once("controllers/aduanCtrl.php");
 		$controller = new AduanCtrl();
+		if (isset($_POST['status'])) { 
+			$controller->ubahStatus();
+		}
 		$controller->getAllData();
     	$namaTaman = $controller->namaTaman;
     	$namaKategori = $controller->namaKategori;
+    	$namaStatus = $controller->namaStatus;
     	$numOfAduan = $controller->numOfAduan;
     	$allAduan = $controller->allAduan;
 		$title = "Daftar Aduan";

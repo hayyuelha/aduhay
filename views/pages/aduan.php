@@ -1,5 +1,7 @@
 <?php
-	session_start();
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
 ?>
 
 <img src="assets/img/aduhay-logo.png" style="width: 22%; height: auto; padding-left: 97px; margin-top: -5px; z-index: 100; position: relative;">
@@ -78,6 +80,7 @@
 			                <th>Kategori</th>
 			                <th>Waktu</th>
 			                <th>Status</th>
+			                <th></th>
 			            </tr>
 			        </thead>
 			 
@@ -88,14 +91,14 @@
 			                <td><?php echo $aduan['id']?></td>
 			                <td><?php echo $aduan['taman']?></td>
 			                <td><?php echo $aduan['deskripsi']?></td>
-			                <th><?php echo $aduan['kategori']?></th>
-			                <th><?php echo $aduan['waktu']?></th>
-			                <td><?php echo $aduan['status']?>
+			                <td><?php echo $aduan['kategori']?></td>
+			                <td><?php echo $aduan['waktu']?></td>
+			                <td><?php echo $aduan['status']?></td>
+			                <td>
 			                	<?php if(isset($_SESSION['user_id'])):?>
-			                		<a href="#" data-toggle="modal" data-target="#ubah-status-modal">
+			                		<a href="#" data-toggle="modal" data-target="#ubah-status-modal" class="ubah-status">
 			                		<span class='fa fa-pencil'></span>
 			                	<?php endif?>	
-			                	
 			                </td>
 			            </tr>			        		
 			        <?php } ?>
@@ -173,41 +176,39 @@
 		  <tr>
 		    <td width="140">ID Aduan</td>
 		    <td width="15" align="left">:</td>
-		    <td>123</td> 
+		    <td id="id_aduan"></td> 
 		  </tr>
 		  <tr>
 		    <td width="140">Deskripsi Aduan</td>
 		    <td width="15" align="left">:</td>
-		    <td>Haloooooooooooooo</td> 
+		    <td id="deskripsi"></td> 
 		  </tr>
 		  <tr>
 		    <td width="140">Taman</td>
 		    <td width="15" align="left">:</td>
-		    <td>Taman Ganesha</td> 
+		    <td id="taman"></td> 
 		  </tr>
 		  <tr>
 		    <td width="140">Status Sekarang</td>
 		    <td width="15" align="left">:</td>
-		    <td>Menunggu Konfirmasi</td> 
+		    <td id="status"></td> 
 		  </tr>
 		  <tr>
-		    <td width="140">Opsi Ubah status</td>
+		    <td width="140">Ubah status</td>
 		    <td width="15" align="left">:</td>
-		    <td></td> 
+		    <td>
+		    	<input type="hidden" id="id_aduan2" name="id_aduan">
+		      	<select class="form-control span4" id="status_baru" name="status">
+		      		<?php
+		      			foreach ($namaStatus as $row)
+						{
+							echo '<option value="' . $row['id'] . '">'.$row['nama_status'].'</option>';
+						}
+		      		?>
+		      	</select>
+		    </td> 
 		  </tr>
 		</table>
-	    <div style="padding-left: 40px" class="radio"><label>
-	      <input type="radio" value="1" name="status-radio">Menunggu Konfirmasi</br>
-	    </label></div>
-	    <div style="padding-left: 40px" class="radio"><label>
-	      <input type="radio" value="2" name="status-radio">Ditolak</br>
-	    </label></div>
-	    <div style="padding-left: 40px" class="radio"><label>
-	      <input type="radio" value="3" name="status-radio">Sedang Ditanggapi</br>
-	    </label></div>
-	    <div style="padding-left: 40px" class="radio"><label>
-	      <input type="radio" value="4" name="status-radio">Sudah Ditanggulangi</br>
-	    </label></div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
@@ -248,6 +249,25 @@
 					.column(3)
 					.search(selected)
 					.draw();
+			});
+			$('.ubah-status').on('click', function() {
+				// get id and data
+				id = datatable.row($(this).closest("tr")).index();
+				id_aduan = datatable.cell(id, 0).data();
+				taman = datatable.cell(id, 1).data();
+				deskripsi = datatable.cell(id, 2).data();
+				kategori = datatable.cell(id, 3).data();
+				waktu = datatable.cell(id, 4).data();
+				status = datatable.cell(id, 5).data();
+
+				// set data
+				$('#id_aduan').html(id_aduan);
+				$('#id_aduan2').val(id_aduan);
+				$('#taman').html(taman);
+				$('#deskripsi').html(deskripsi);
+				$('#kategori').html(kategori);
+				$('#waktu').html(waktu);
+				$('#status').html(status);
 			});
 		});
 	</script>
