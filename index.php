@@ -3,10 +3,13 @@
 isset($_GET['page']) ? $page = $_GET['page'] : $page = "";
 
 switch ($page) {
-	/* Pages */
-	case "":
-		$title = "Home";
-		$body  = "views/pages/home.php";
+
+	case "home"		:
+		include_once("controllers/inputCtrl.php");
+		$title = "Input Aduan";
+		$controller = new InputCtrl();
+		$controller->invoke_formInput();
+		$body  = "views/pages/home.php";		
 		break;
 
 	case "aduan":
@@ -19,10 +22,16 @@ switch ($page) {
 		$body  = "views/pages/login.php";
 		break;
 
-	/* Forms */
-	case "input_aduan":
-		include("controllers/input_aduan.php");
-		exit(0);
+	case "laporan":
+		$title = "Laporan";
+		require_once('controllers/laporan.php');
+		$laporan = new laporan();
+		if(isset($_POST['optradio1'])){
+			echo $laporan->template1();	
+		} else if (isset($_POST['optradio2'])){
+			echo $laporan->template2();
+		}
+		break;
 
 	default:
 		$title = "Error";

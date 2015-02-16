@@ -13,7 +13,7 @@ class DB {
 
 		// connection failed
 		if (!$this->db) {
-			die("Error " . mysqli_errno() . ": " . mysqli_error());
+			die("Error " . mysqli_errno($this->db) . ": " . mysqli_error($this->db));
 		}
 	}
 
@@ -26,7 +26,7 @@ class DB {
 		// perform a query
 		$result = $this->db->query($sql);
 		if (!$result) {
-			die("Error: " . mysqli_error($this->db));
+			die("Error " . mysqli_errno($this->db) . ": " . mysqli_error($this->db));
 		}
 
 		// convert it into array

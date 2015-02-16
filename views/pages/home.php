@@ -1,34 +1,61 @@
-<h1>HOME BERO</h1>
+<div class="container">
 
-<?php
-if (isset($_POST["message"])) {
-	echo "<h3>Message: " . $_POST["message"] . "</h3>";
-}
-?>
+      <div class="masthead">
+        <nav>
+          <ul class="nav nav-justified">
+            <li class="active"><a href="input">Input Aduan</a></li>
+            <li><a href="aduan">Daftar Aduan</a></li>
+          </ul>
+        </nav>
+      </div>
 
-<form action="input_aduan" method="post">
+      
+      <div class="col-md-6">
+      	<img src="assets/img/aduhay-logo.png" alt="logo" id="logoHome">
+      </div>
 
-<select name="taman">
-<?php
-require_once("/../../models/taman.php");
-$allTaman = Taman::getAll();
-foreach ($allTaman as $taman) {
-	echo "<option value='" . $taman->id . "'>" . $taman->nama . "</option>";
-}
-?>
-</select>
+      <div class="col-md-6">
+      <div class="jumbotron">
+        <h1>Input Aduan</h1>
+      </div>
+      <form>
+	    <div class="form-group">
+	      	<div class="row" id="dd_forminput">
+		      	<select class="form-control span3" id="namataman">
+		      		<option value = "0">--Pilih taman--</option>
+		      		<?php
+		      			// include 'models/taman.php';
+		      			// $taman = new Taman();
+		      			foreach ($namaTaman as $row)
+						{
+							echo '<option value="$row[id]">'.$row['nama'].'</option>';
+						}
+		      		?>
+		      	</select>
+		      	<select class="form-control span2" id="kategori">
+		      		<option value = "0">--Pilih kategori--</option>
+		      		<?php
+		      			// include 'models/taman.php';
+		      			// $taman = new Taman();
+		      			foreach ($namaKategori as $row)
+						{
+							echo '<option value="$row[id]">'.$row['nama_kategori'].'</option>';
+						}
+		      		?>
+		      	</select>
+			</div>
+			<div class="row">
+				<textarea class="form-control" rows="5" id="deskripsi" placeholder="Deskripsi aduan"></textarea> 
+			</div>
+			<div class="row" id="btnGrp">
+				<button class="btn btn-default span2" value="submit" id="btn_foto">Tautkan Foto</button>	
+				<button class="btn btn-success span2" value="submit" id="btn_adukan">Adukan</button>
+			</div>
+		</div>
+      </form>
+      </div>
+</div> <!-- /container -->
 
-<select name="kategori">
-<?php
-require_once("/../../models/kategori.php");
-$allKategori = Kategori::getAll();
-foreach ($allKategori as $kategori) {
-	echo "<option value='" . $kategori->id . "'>" . $kategori->nama_kategori . "</option>";
-}
-?>
-</select>
 
-<br>
-<input name="deskripsi" type="text" row="5" placeholder="Tulis keluhan/masukan/saranmu!"/>
-
-</form>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="assets/js/ie10-viewport-bug-workaround.js"></script>
