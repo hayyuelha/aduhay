@@ -3,6 +3,9 @@
 isset($_GET['page']) ? $page = $_GET['page'] : $page = "";
 
 switch ($page) {
+	case "logout" :
+		$body = "views/pages/logout.php";
+		break;
 	case "aduan_admin" :
 		require_once("controllers/aduanCtrl.php");
 		$controller = new AduanCtrl();

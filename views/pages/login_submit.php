@@ -103,7 +103,11 @@ else
                 $_SESSION['user_id'] = $user_id;
 
                 /*** tell the user we are logged in ***/
+
                     header("Location: aduan");
+
+                
+
         }
 
 

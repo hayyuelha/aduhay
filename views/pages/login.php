@@ -1,4 +1,7 @@
+
 <?php session_start(); ?>
+
+
 <section id="login">
     <div class="container">
     	<div class="row">

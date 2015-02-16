@@ -1,3 +1,7 @@
+<?php
+	session_start();
+?>
+
 <img src="assets/img/aduhay-logo.png" style="width: 22%; height: auto; padding-left: 97px; margin-top: -5px; z-index: 100; position: relative;">
 <nav class="navbar navbar-default navbar-static-top" style="margin-top: -72px; z-index:0;">
            
@@ -14,7 +18,17 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right" id="navbarBtn">
-            <li><a href="home">Input Aduan</a></li>
+            
+            
+            <?php if(isset( $_SESSION['user_id'] ))
+				{
+				    echo '<li><a href="logout">Logout</a></li>';
+				}
+				else {
+					echo '<li><a href="home">Input Aduan</a></li>';
+				}
+			?>
+            
             <li class="active"><a href="aduan">Daftar Aduan</a></li>
           </ul>
         </div><!--/.nav-collapse -->
@@ -73,17 +87,22 @@
 			                <th><?php echo $aduan['kategori']?></th>
 			                <th><?php echo $aduan['waktu']?></th>
 			                <td><?php echo $aduan['status']?>
-			                	<a href="#" data-toggle="modal" data-target="#ubah-status-modal">
-			                	<span class='fa fa-pencil'></span>
+			                	<?php if(isset($_SESSION['user_id'])):?>
+			                		<a href="#" data-toggle="modal" data-target="#ubah-status-modal">
+			                		<span class='fa fa-pencil'></span>
+			                	<?php endif?>	
+			                	
 			                </td>
 			            </tr>			        		
 			        <?php } ?>
 			        </tbody>
 			    </table>
 		    </div>
-		    <div class="row" id="btnGenerateLap">
-		    	<button type="button" class="btn btn-success" value="" data-toggle="modal" data-target="#opsi-laporan-modal">Buat Laporan</button>
-		    </div>
+		    <?php if(isset($_SESSION['user_id'])):?>
+			    <div class="row" id="btnGenerateLap">
+			    	<button type="button" class="btn btn-success" value="" data-toggle="modal" data-target="#opsi-laporan-modal">Buat Laporan</button>
+			    </div>
+		    <?php endif?>
 		</div>
       </form>
       </div>
