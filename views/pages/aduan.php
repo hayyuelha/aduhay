@@ -11,29 +11,36 @@
         </nav>
       </div>
       
-      <div class="col-md-3">
+      <div class="col-md-4">
       	<img src="assets/img/aduhay-logo.png" alt="logo" id="logoHome">
 	  </div>
 
-      <div class="col-md-9">
+      <div class="col-md-8">
       <div class="jumbotron">
         <h1>Daftar Aduan</h1>
       </div>
       <form>
 	    <div class="form-group">
 	      	<div class="row">
-		      	<select class="form-control span6" id="namataman">
+		      	<select class="form-control span4" id="namataman">
 		      		<option value = "0">--Pilih taman--</option>
 		      		<?php
-		      			// include 'models/taman.php';
-		      			// $taman = new Taman();
 		      			foreach ($namaTaman as $row)
 						{
 							echo '<option value="' . $row['id'] . '">'.$row['nama'].'</option>';
 						}
 		      		?>
 		      	</select>
-			</div>
+		      	<select class="form-control span4" id="namakategori">
+		      		<option value = "0">--Pilih kategori--</option>
+		      		<?php
+		      			foreach ($namaKategori as $row)
+						{
+							echo '<option value="' . $row['id'] . '">'.$row['nama_kategori'].'</option>';
+						}
+		      		?>
+		      	</select>
+		    </div>
 			<div class="row" id="plugin_datatable">
 				<table id="data_aduan" class="table table-striped table-bordered" cellspacing="0" width="100%">
 			        <thead>
@@ -125,21 +132,30 @@
 	<script type="text/javascript" language="javascript" src="//cdn.datatables.net/1.10.5/js/jquery.dataTables.min.js"></script>
 	<script type="text/javascript" language="javascript" src="//cdn.datatables.net/plug-ins/f2c75b7247b/integration/bootstrap/3/dataTables.bootstrap.js"></script>
 	
-	<script type="text/javascript" charset="utf-8">
-		</script>
     <script src="assets/js/ie10-viewport-bug-workaround.js"></script>
     <script type="text/javascript">
-	// For demo to fit into DataTables site builder...
 		$(document).ready(function() {
-			datatable = $('#data_aduan').dataTable();
+			datatable = $('#data_aduan').DataTable();
+			// For demo to fit into DataTables site builder...
 			$('#data_aduan')
 				.removeClass( 'display' )
 				.addClass('table table-striped table-bordered');
+
+			// change namataman
 			$('#namataman').on('change', function() {
-				var selected = $(this).find(":selected").text();
+				var selected = $(this).val() > 0 ? $(this).find(":selected").text() : '';
 				datatable
-					.column(2)
-					.search(selected);
+					.column(1)
+					.search(selected)
+					.draw();
+			});
+			// change namakategori
+			$('#namakategori').on('change', function() {
+				var selected = $(this).val() > 0 ? $(this).find(":selected").text() : '';
+				datatable
+					.column(3)
+					.search(selected)
+					.draw();
 			});
 		});
 	</script>
