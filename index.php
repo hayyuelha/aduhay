@@ -3,11 +3,12 @@
 isset($_GET['page']) ? $page = $_GET['page'] : $page = "";
 
 switch ($page) {
-	case "input"		:
+	case "home"		:
 		include_once("controllers/inputCtrl.php");
 		$title = "Input Aduan";
 		$controller = new InputCtrl();
 		$controller->invoke_formInput();
+		$body  = "views/pages/home.php";		
 		break;
 
 	case "aduan":

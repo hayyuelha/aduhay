@@ -115,6 +115,9 @@ class laporan{
     }
 
     public function template2(){
+	    setlocale(LC_ALL, 'IND');
+	    $bulan = strftime("%B");
+	    $tahun = date('Y');
     	// create new PDF document
 		$pdf = new pdfKop('P', PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
 		// set document information
@@ -148,7 +151,7 @@ class laporan{
 
 		$pdf->Write(0, '', '', 0, 'C', true, 0, false, false, 0);
 		$pdf->Write(0, "Laporan Pengaduan Kondisi Taman Kota Bandung", '', 0, 'C', true, 0, false, false, 0);
-		$pdf->Write(0, "Bulan Januari 2015", '', 0, 'C', true, 0, false, false, 0);
+		$pdf->Write(0, "Bulan ".$bulan." ".$tahun, '', 0, 'C', true, 0, false, false, 0);
 		$pdf->Write(0, '', '', 0, 'C', true, 0, false, false, 0);
 
 
@@ -205,9 +208,99 @@ class laporan{
 		    $pdf->Write(10, '', '', 0, 'C', true, 0, false, false, 0);
 		}
 		//Close and output PDF document
+		$pdf->Output('Laporan '.$bulan.' '.$tahun.'.pdf', 'I');
+    }
+
+    public function template3(){
 	    setlocale(LC_ALL, 'IND');
 	    $bulan = strftime("%B");
 	    $tahun = date('Y');
+    	// create new PDF document
+		$pdf = new pdfKop('P', PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
+		// set document information
+		$pdf->SetCreator(PDF_CREATOR);
+		$pdf->SetAuthor('Aduhay');
+
+		// set default monospaced font
+		$pdf->SetDefaultMonospacedFont(PDF_FONT_MONOSPACED);
+
+		// set margins
+		$pdf->SetMargins(PDF_MARGIN_LEFT, PDF_MARGIN_TOP, PDF_MARGIN_RIGHT);
+		$pdf->SetHeaderMargin(PDF_MARGIN_HEADER);
+		$pdf->SetFooterMargin(PDF_MARGIN_FOOTER);
+
+		// set auto page breaks
+		$pdf->SetAutoPageBreak(TRUE, PDF_MARGIN_BOTTOM);
+
+		// set image scale factor
+		$pdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
+
+		// set some language-dependent strings (optional)
+		if (@file_exists(dirname(__FILE__).'/lang/eng.php')) {
+		  require_once(dirname(__FILE__).'/lang/eng.php');
+		  $pdf->setLanguageArray($l);
+		}
+
+		$taman = $this->model->getLaporanByKategori();
+
+		$pdf->AddPage();
+		$pdf->SetFont('helvetica', 'B', 12);
+
+		$pdf->Write(0, '', '', 0, 'C', true, 0, false, false, 0);
+		$pdf->Write(0, "Laporan Pengaduan Kondisi Taman Kota Bandung", '', 0, 'C', true, 0, false, false, 0);
+		$pdf->Write(0, "Bulan ".$bulan." ".$tahun, '', 0, 'C', true, 0, false, false, 0);
+		$pdf->Write(0, '', '', 0, 'C', true, 0, false, false, 0);
+
+
+		$pdf->SetFont('helvetica', '', 10);
+		$tbl = '
+		<table border="1" cellpadding="2" align="center">
+		<thead>
+		 <tr>
+		  <th rowspan="2" width="40" align="center"><b>No.</b></th>
+		  <th rowspan="2" width="140" align="center"><b>Nama Taman</b></th>
+		  <th colspan="'.$taman['nKategori'].'" align="center"><b>Kategori</b></th>
+		  <th rowspan="2" width="93" align="center"> <b>Total Aduan</b></th>
+		 </tr>
+		 <tr>';
+		  foreach ($taman['kategori'] as $kat) {
+		  	$tbl .= '<th align="center"><b>'.$kat['nama_kategori'].'</b></th>'; 
+		  }
+		 $tbl .= '</tr>
+		</thead>
+		<tbody>
+		';
+
+		$it=1;
+		if (!$taman){
+		    $pdf->SetFont('helvetica', 'B', 10);
+		    $pdf->Write(0, "Daftar taman kosong.", '', 0, 'C', true, 0, false, false, 0);
+		} else {
+			foreach($taman as $row){
+			  if (is_array($row) && array_key_exists('id', $row)){
+				  $tbl .= '<tr>
+				              <td width="40" align="center">'.$it.'.</td>
+				              <td width="140" align="left">'.$row['nama'].'</td>';
+				  for ($i=1; $i <= $taman['nKategori']; $i++) {
+				  	$tbl .= '<td>'.$row['kategori'.$i].'</td>';
+				  }
+				  $tbl .= '<td width="93">'.$row['total'].'</td>';
+				  $tbl .= '</tr>';
+				  $it++;
+			  }
+			}
+			$tbl .= '<tr>
+			              <td colspan="2" align="center"><b>Total Aduan</b></td>';
+			for ($i=1; $i <= $taman['nKategori']; $i++) {
+		  		$tbl .= '<td>'.$taman['kategori'.$i].'</td>';
+		  	}
+			$tbl .= '<td width="93">'.$taman['total'].'</td>
+			           </tr>';
+			$tbl .= '</tbody></table>';
+		    $pdf->writeHTML($tbl, true, false, false, false, '');
+		    $pdf->Write(10, '', '', 0, 'C', true, 0, false, false, 0);
+		}
+		//Close and output PDF document
 		$pdf->Output('Laporan '.$bulan.' '.$tahun.'.pdf', 'I');
     }
 }
