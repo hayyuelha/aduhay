@@ -30,10 +30,12 @@ switch ($page) {
 		$bulan = $_POST['bulan'];
 		$tahun = $_POST['tahun'];
 		$laporan = new laporan($bulan, $tahun);
-		if(isset($_POST['optradio1'])){
+		if($_POST['optradio'] == "1"){
 			echo $laporan->template1();	
-		} else if (isset($_POST['optradio2'])){
+		} else if ($_POST['optradio'] == "2"){
 			echo $laporan->template2();
+		} else if ($_POST['optradio'] == "3"){
+			echo $laporan->template3();
 		}
 		break;
 

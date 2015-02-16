@@ -91,14 +91,17 @@
 		      	</select>
 		      	<select class="form-control span2" id="tahun" name="tahun">
 		      		<option value="0">--Pilih Tahun--</option>
-		      		<option value="1">2015</option>
+		      		<option value="2015">2015</option>
 		      	</select>
 		    </div>
 		    <div class="radio"><label>
-		      <input type="radio" name="optradio1">Template 1: Laporan aduan per taman</br><img src="assets/img/temp1.png" id="ss_temp1" alt="temp1">
+		      <input type="radio" value="1" name="optradio">Template 1: Laporan aduan per taman</br><img src="assets/img/temp1.png" id="ss_temp1" alt="temp1">
 		    </label></div>
 		    <div class="radio"><label>
-		      <input type="radio" name="optradio2">Template 2: Laporan aduan berdasarkan status</br><img src="assets/img/temp2.png" id="ss_temp2" alt="temp2">
+		      <input type="radio" value="2" name="optradio">Template 2: Laporan aduan berdasarkan status</br><img src="assets/img/temp2.png" id="ss_temp2" alt="temp2">
+		    </label></div>
+		    <div class="radio"><label>
+		      <input type="radio" value="3" name="optradio">Template 3: Laporan aduan berdasarkan kategori aduan</br><img src="assets/img/temp3.png" id="ss_temp3" alt="temp3">
 		    </label></div>
       </div>
       <div class="modal-footer">
