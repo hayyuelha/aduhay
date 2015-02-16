@@ -62,10 +62,22 @@
 }
 
 body {
+<<<<<<< HEAD
+	min-height: 2000px;
+	padding-top: 70px;
+    background-image: url("../img/bg.jpg");
+    background-attachment: fixed;
+    background-size:100% 100%;
+    background-repeat: no-repeat;
+=======
 	min-height: 200px;
 	padding-top: 20px;
+>>>>>>> 66d4eda53365f3c1690ae706941537d43ebf4734
 }
 
+#bg {
+    background-color: white;
+}
 #login {
     padding-top: 50px
 }
@@ -142,4 +154,4 @@ body {
 
 #navbarBtn{
     padding-right: 75px;
-}
+}    

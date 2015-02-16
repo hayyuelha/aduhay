@@ -21,7 +21,7 @@
       </div>
 </nav>
 
-<div class="container">
+<div class="container" id="bg">
 
       <div class="col-md-10 col-md-offset-1">
 
