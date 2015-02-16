@@ -11,6 +11,9 @@ switch ($page) {
 		$namaTaman = $controller->namaTaman;
 		$namaKategori = $controller->namaKategori;
 		$title = "Input Aduan";
+		if (isset($_POST['submit'])){
+			$controller->post_aduan();
+		}
 		$body  = "views/pages/home.php";
 		break;
 
@@ -33,11 +36,15 @@ switch ($page) {
 	case "laporan":
 		$title = "Laporan";
 		require_once('controllers/laporan.php');
-		$laporan = new laporan();
-		if(isset($_POST['optradio1'])){
+		$bulan = $_POST['bulan'];
+		$tahun = $_POST['tahun'];
+		$laporan = new laporan($bulan, $tahun);
+		if($_POST['optradio'] == "1"){
 			echo $laporan->template1();	
-		} else if (isset($_POST['optradio2'])){
+		} else if ($_POST['optradio'] == "2"){
 			echo $laporan->template2();
+		} else if ($_POST['optradio'] == "3"){
+			echo $laporan->template3();
 		}
 		break;
 

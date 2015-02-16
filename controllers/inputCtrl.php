@@ -20,7 +20,23 @@ class InputCtrl {
     }
 
     public function post_aduan(){
-        
+        require_once(__DIR__ . "/db.php");
+
+        // print_r($_POST);
+
+        if (!isset($_POST["deskripsi"]) || !isset($_POST["namataman"]) || !isset($_POST["kategori"])) {
+            $_POST["message"] = "Salah bero";
+        }
+        else {
+            $deskripsi      = addslashes($_POST["deskripsi"]);
+            $id_kategori    = addslashes($_POST["kategori"]);
+            $id_taman       = addslashes($_POST["namataman"]);
+            $this->model->insertAduan($deskripsi, $id_kategori, $id_taman);
+            $_POST["message"] = "Aduan berhasil dimasukkan!";
+        }
+
+        // move to home
+        // header("location: index.php");
     }
 }
 

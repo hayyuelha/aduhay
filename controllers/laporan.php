@@ -1,13 +1,17 @@
 <?php 
 class laporan{
 	private $model;
+	private $bulan, $tahun;
  
-    public function __construct() {
+    public function __construct($bulan, $tahun) {
         require_once('library/tcpdf_include.php');
 		require_once('library/pdfCover.php');
 		require_once('library/pdfKop.php');
 		require_once('models/laporan.php');
-        $this->model = new laporan_model();
+        $this->model = new laporan_model($bulan, $tahun);
+	    setlocale(LC_ALL, 'IND');
+	    $this->bulan = strftime("%B", strtotime($bulan."/20/2003"));
+	    $this->tahun = strftime("%Y", strtotime("1/20/".$tahun));
     }
 
     public function template1(){
@@ -40,7 +44,7 @@ class laporan{
 
 		$pdf->AddPage();
 		$data = $this->model->getLaporanByKategoriStatus();
-		$pdf->Cover();
+		$pdf->Cover($this->bulan, $this->tahun);
 		$i=0;
 		if (!$data){
 		    $pdf->SetFont('helvetica', 'B', 10);
@@ -110,14 +114,11 @@ class laporan{
 		}
 
 		//Close and output PDF document
-		$pdf->Output('Laporan '.$pdf->bulan.' '.$pdf->tahun.'.pdf', 'I');
+		$pdf->Output('Laporan '.$this->bulan.' '.$this->tahun.'.pdf', 'I');
 
     }
 
     public function template2(){
-	    setlocale(LC_ALL, 'IND');
-	    $bulan = strftime("%B");
-	    $tahun = date('Y');
     	// create new PDF document
 		$pdf = new pdfKop('P', PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
 		// set document information
@@ -151,7 +152,7 @@ class laporan{
 
 		$pdf->Write(0, '', '', 0, 'C', true, 0, false, false, 0);
 		$pdf->Write(0, "Laporan Pengaduan Kondisi Taman Kota Bandung", '', 0, 'C', true, 0, false, false, 0);
-		$pdf->Write(0, "Bulan ".$bulan." ".$tahun, '', 0, 'C', true, 0, false, false, 0);
+		$pdf->Write(0, "Bulan ".$this->bulan." ".$this->tahun, '', 0, 'C', true, 0, false, false, 0);
 		$pdf->Write(0, '', '', 0, 'C', true, 0, false, false, 0);
 
 
@@ -208,7 +209,7 @@ class laporan{
 		    $pdf->Write(10, '', '', 0, 'C', true, 0, false, false, 0);
 		}
 		//Close and output PDF document
-		$pdf->Output('Laporan '.$bulan.' '.$tahun.'.pdf', 'I');
+		$pdf->Output('Laporan '.$this->bulan.' '.$this->tahun.'.pdf', 'I');
     }
 
     public function template3(){
@@ -248,7 +249,7 @@ class laporan{
 
 		$pdf->Write(0, '', '', 0, 'C', true, 0, false, false, 0);
 		$pdf->Write(0, "Laporan Pengaduan Kondisi Taman Kota Bandung", '', 0, 'C', true, 0, false, false, 0);
-		$pdf->Write(0, "Bulan ".$bulan." ".$tahun, '', 0, 'C', true, 0, false, false, 0);
+		$pdf->Write(0, "Bulan ".$this->bulan." ".$this->tahun, '', 0, 'C', true, 0, false, false, 0);
 		$pdf->Write(0, '', '', 0, 'C', true, 0, false, false, 0);
 
 
@@ -301,6 +302,6 @@ class laporan{
 		    $pdf->Write(10, '', '', 0, 'C', true, 0, false, false, 0);
 		}
 		//Close and output PDF document
-		$pdf->Output('Laporan '.$bulan.' '.$tahun.'.pdf', 'I');
+		$pdf->Output('Laporan '.$this->bulan.' '.$this->tahun.'.pdf', 'I');
     }
 }

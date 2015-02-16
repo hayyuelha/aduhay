@@ -3,7 +3,6 @@ require_once('tcpdf.php');
 
 class pdfCover extends TCPDF {
   public $page_counter = 0;
-  public $bulan,$tahun;
 
   public function Footer() {
     if ($this->page_counter == 0){
@@ -17,7 +16,7 @@ class pdfCover extends TCPDF {
     $this->page_counter++;  
   }
 
-  public function Cover(){
+  public function Cover($bulan, $tahun){
     setlocale(LC_ALL, 'IND');
     $this->bulan = strftime("%B");
     $this->tahun = date('Y');
@@ -26,7 +25,7 @@ class pdfCover extends TCPDF {
     $this->SetFont('helvetica', 'B', 20);
     $this->Write(0, "SISTEM PENGADUAN KONDISI TAMAN", '', 0, 'C', true, 0, false, false, 0);
     $this->Write(0, "KOTA BANDUNG", '', 0, 'C', true, 0, false, false, 0);
-    $this->Write(0, "BULAN ".strtoupper($this->bulan)." ".$this->tahun, '', 0, 'C', true, 0, false, false, 0);
+    $this->Write(0, "BULAN ".strtoupper($bulan)." ".$tahun, '', 0, 'C', true, 0, false, false, 0);
     $this->Write(0, '', '', 0, 'C', true, 0, false, false, 0);
     // Image($file, $x='', $y='', $w=0, $h=0, $type='', $link='', $align='', $resize=false, $dpi=300, $palign='', $ismask=false, $imgmask=false, $border=0, $fitbox=false, $hidden=false, $fitonpage=false)
     $this->Image('assets/img/Logo-pemkot.png', 65, 110, 80, 70, 'PNG', '', 'C', true, 150, '', false, false, 0, false, false, false);
