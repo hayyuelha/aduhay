@@ -16,6 +16,9 @@ class InputCtrl {
     	include 'views/pages/home.php';
     }
 
+    public function post_aduan(){
+        
+    }
 }
 
 ?>

@@ -72,8 +72,29 @@
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title" id="myModalLabel">Pilih Template Laporan</h4>
       </div>
-        <form action="laporan" target="_blank" role="form" method="post">
+      <form action="laporan" target="_blank" role="form" method="post">
       <div class="modal-body">
+		    <div class="row">
+		      	<select class="form-control span2" id="bulan">
+		      		<option value="0">--Pilih Bulan--</option>
+		      		<option value="1">Januari</option>
+		      		<option value="2">Februari</option>
+		      		<option value="3">Maret</option>
+		      		<option value="4">April</option>
+		      		<option value="5">Mei</option>
+		      		<option value="6">Juni</option>
+		      		<option value="7">Juli</option>
+		      		<option value="8">Agustus</option>
+		      		<option value="9">September</option>
+		      		<option value="10">Oktober</option>
+		      		<option value="11">November</option>
+		      		<option value="12">Desember</option>
+		      	</select>
+		      	<select class="form-control span2" id="tahun">
+		      		<option value="0">--Pilih Tahun--</option>
+		      		<option value="1">2015</option>
+		      	</select>
+		    </div>
 		    <div class="radio"><label>
 		      <input type="radio" name="optradio1">Template 1: Laporan aduan per taman</br><img src="assets/img/temp1.png" id="ss_temp1" alt="temp1">
 		    </label></div>
