@@ -56,8 +56,7 @@
 			<div class="row">
 				<textarea class="form-control" rows="5" id="deskripsi" name="deskripsi" placeholder="Deskripsi aduan"></textarea> 
 			</div>
-			<div class="row" id="btnGrp">
-				<button class="btn btn-default span2" value="submit" id="btn_foto">Tautkan Foto</button>	
+			<div class="row" id="btnGrp">	
 				<button class="btn btn-success span2" name="submit" value="submit" id="btn_adukan">Adukan</button>
 			</div>
 		</div>

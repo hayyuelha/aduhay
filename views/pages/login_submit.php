@@ -62,7 +62,7 @@ else
     $mysql_username = 'root';
 
     /*** mysql password ***/
-    $mysql_password = 'password';
+    $mysql_password = '';
 
     /*** database name ***/
     $mysql_dbname = 'aduhay_db';
