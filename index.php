@@ -3,6 +3,12 @@
 isset($_GET['page']) ? $page = $_GET['page'] : $page = "";
 
 switch ($page) {
+	case "islogin" :
+		$body = "views/pages/islogin.php";
+		break;
+	case "loginsubmit" :
+		$body = "views/pages/login_submit.php";
+		break;
 
 	case "home"		:
 		include_once("controllers/inputCtrl.php");
