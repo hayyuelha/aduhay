@@ -24,7 +24,6 @@ else
         /*** database name ***/
         $mysql_dbname = 'aduhay_db';
 
-
         /*** select the users name from the database ***/
         $dbh = new PDO("mysql:host=$mysql_hostname;dbname=$mysql_dbname", $mysql_username, $mysql_password);
         /*** $message = a message saying we have connected ***/
@@ -61,7 +60,6 @@ else
         $message = 'We are unable to process your request. Please try again later"';
     }
 }
-
 ?>
 
 <html>

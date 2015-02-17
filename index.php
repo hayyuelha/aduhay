@@ -2,10 +2,12 @@
 
 isset($_GET['page']) ? $page = $_GET['page'] : $page = "";
 
+// $page comes from url dan determines active page
 switch ($page) {
 	case "logout" :
 		$body = "views/pages/logout.php";
 		break;
+
 	case "aduan_admin" :
 		require_once("controllers/aduanCtrl.php");
 		$controller = new AduanCtrl();
@@ -33,7 +35,7 @@ switch ($page) {
 		$namaKategori = $controller->namaKategori;
 		$title = "Input Aduan";
 		if (isset($_POST['submit'])){
-			$controller->post_aduan(); //perlu kasih if "post_aduan() berhasil" ?
+			$controller->post_aduan(); 
 			echo '<script type="text/javascript">alert ("Aduan berhasil disimpan.");</script>';
 		}
 		$body  = "views/pages/home.php";
@@ -75,17 +77,12 @@ switch ($page) {
 		}
 		break;
 
-	case "coba":
-		$title = "Laman Coba-coba";
-		$body = "views/pages/coba.php";
-		break;
-
 	default:
 		$title = "Error";
 		$body  = "views/pages/error.php";
 }
 
+// structure of the body of page, consists of header,active page, and footer
 include("views/header.php");
 include($body);
-// echo "page = [" . $page . "]";
 include("views/footer.php");

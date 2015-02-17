@@ -105,12 +105,7 @@ else
                 /*** tell the user we are logged in ***/
 
                     header("Location: aduan");
-
-                
-
         }
-
-
     }
     catch(Exception $e)
     {

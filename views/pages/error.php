@@ -1,1 +1,1 @@
-<h1>404 : File Not Found</h1>
+<h1 style="color:white">404 : Page Not Found</h1>
